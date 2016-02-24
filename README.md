@@ -7,13 +7,14 @@ The end-result is a comma separated string of paths to files validated and ready
 This might move into the distributed world later but for now it will execute purely in the Driver.
 
 Simple code example:
+
 import com.mapr.xml._
 
 ...
 
 val validator = new ValidateXML(sc.hadoopConfiguration)
 
-val input_files = validator.validate("maprfs:///data/landing","maprfs:///data/landing/XSD”)
+val input_files = validator.validateXmls("maprfs:///data/landing","maprfs:///data/landing/XSD”)
 
 val base_rdd = sqlContext.read.format("xml").option("rowTag”,”whatever”).load(input_files)
 
