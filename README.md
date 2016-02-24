@@ -12,7 +12,9 @@ import com.mapr.xml._
 ...
 
 val validator = new ValidateXML(sc.hadoopConfiguration)
+
 val input_files = validator.validate("maprfs:///data/landing","maprfs:///data/landing/XSD”)
+
 val base_rdd = sqlContext.read.format("xml").option("rowTag”,”whatever”).load(input_files)
 
 
